@@ -10,6 +10,21 @@ var alarmDays = document.getElementById('alarm_days');
 var alarmAmount = document.getElementById('alarm_amount');
 var alarmDonateAddress = document.getElementById('alarm_donate_address');
 var transactionHistory = document.getElementById('transaction-history');
+
+// global variables
+var tempTransaction;
+var keyWallet;
+var yourBalance;
+var challengeTime;
+var days;
+var isChallenge = false;
+var timeup = false;
+var isImported = false;
+var senconds;
+var limitTime = 15;
+var isSolved = false;
+var puzzleNumber;
+
 // Create alarm elements
 createAlarmElements();
 
@@ -38,19 +53,6 @@ function createAlarmElements(){
         alarmMinutes.appendChild(minuteOption);
     }
 }
-
-var tempTransaction;
-var keyWallet;
-var yourBalance;
-var challengeTime;
-var days;
-var isChallenge = false;
-var timeup = false;
-var isImported = false;
-var senconds;
-var limitTime = 15;
-var isSolved = false;
-var puzzleNumber;
 
 function extractwallet() {
     const input = document.querySelector('input[type="file"]');
@@ -182,7 +184,7 @@ function renderTimeAndChallnge(){
     var finish = false;
     if(isChallenge) {
         if(timeup) {
-            if(timeSeconds - senconds > limitTime){
+            if((timeSeconds - senconds) == limitTime){
                 if(isSolved) {
                     if(days > 1) {
                         document.getElementById("date").innerHTML = --days + " DAYS LEFT";
@@ -205,10 +207,8 @@ function renderTimeAndChallnge(){
                     })
                     finish = true;
                     transfer();
-                    
                 }
                 if(finish) {
-                    document.getElementById("puzzle-section").style.display = 'none';
                     document.getElementById("note").style.display = 'none';
                     document.getElementById("settings").style.display = 'block';
                     document.getElementById("challenging").style.display = 'none';
@@ -216,6 +216,7 @@ function renderTimeAndChallnge(){
                     isChallenge = false;
                     finish = false;
                 }
+                document.getElementById("puzzle-section").style.display = 'none';
                 document.getElementById("puzzle").style.color = "#228B22";
                 document.getElementById("wrapper").style.color = '#00F746';
                 isSolved = false;
@@ -225,7 +226,7 @@ function renderTimeAndChallnge(){
         }
 
         // Check if time up and finish the challange
-        if (challengeTime.getHours() == timeHours && challengeTime.getMinutes() == timeMinutes){
+        if (challengeTime.getHours() == timeHours && challengeTime.getMinutes() == timeMinutes && timeSeconds < limitTime) {
             timeup = true;    
             senconds = timeSeconds;
             document.getElementById("wrapper").style.color = '#FF4500';
@@ -247,25 +248,25 @@ function solvePuzzle() {
     var result = document.getElementById("your-answer").value;
     if(result == puzzleNumber) {
         isSolved = true;
-        document.getElementById("puzzle").innerHTML = "That's right answer";
+        document.getElementById("puzzle").innerHTML = "Correct !!!";
         document.getElementById("puzzle").style.color = "#228B22";
     }
 }
 
 async function transfer() {
-    // let transaction = await arweave.createTransaction(
-    //     {
-    //         target: tempTransaction.to,
-    //         quantity: arweave.ar.arToWinston(tempTransaction.quantity)
-    //     }, keyWallet
-    // );
-    // await arweave.transactions.sign(transaction, keyWallet);
-    // let response = await arweave.transactions.post(transaction);
-    // console.log("transfer: ", response);
-    // var list = document.getElementById('transaction-list');
-    // var newListItem = document.createElement('li');
-    // newListItem.innerHTML = challengeTime.toLocaleTimeString() + " - " + tempTransaction.to + " - " + tempTransaction.quantity + " - " + transaction.id;  
-    // list.appendChild(newListItem);
+    let transaction = await arweave.createTransaction(
+        {
+            target: tempTransaction.to,
+            quantity: arweave.ar.arToWinston(tempTransaction.quantity)
+        }, keyWallet
+    );
+    await arweave.transactions.sign(transaction, keyWallet);
+    let response = await arweave.transactions.post(transaction);
+    console.log("transfer: ", response);
+    var list = document.getElementById('transaction-list');
+    var newListItem = document.createElement('li');
+    newListItem.innerHTML = challengeTime.toLocaleTimeString() + " - " + tempTransaction.to + " - " + tempTransaction.quantity + " - " + transaction.id;  
+    list.appendChild(newListItem);
 }
 
 // render clock at first load 
