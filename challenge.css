@@ -1,0 +1,114 @@
+/* Fonts */
+@font-face {
+    font-family: 'Digital';
+    src: url("assets/alarm_clock.ttf") format("truetype");
+}
+
+html{
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    background-image: url("assets/background.jpg");
+}
+
+body{
+    padding: 0;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h1{
+    font-family: 'Digital';
+    font-size: 90px;
+    color: #00F746;
+    margin: 15px;
+}
+
+h2{
+    font-size: 70px;
+    color: 	    #EEE8AA;
+    margin: 0;
+}
+
+.title {
+    font-family: 'Digital';
+    font-size: 60px;
+    color: #00F746;
+}
+
+h3{
+    color: white;
+    margin: 0px 0;
+}
+
+.note {
+    color: red
+}
+
+.sponsor {
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+}
+
+ul {
+    list-style: none;
+}
+
+li {
+    margin: 5px;
+    display: inline-flex; 
+}
+
+#clock{
+    padding: 70px 0 50px;
+    margin: auto;
+    text-align: center;
+}
+
+#settings{
+    height: 100%;
+    padding: 20px 0;
+    margin: auto;
+    text-align: center;
+    overflow: auto;
+}
+
+#your-answer {
+    text-align: right;
+}
+
+#burn {
+    color: #666600;
+    text-shadow: 0px -1px 4px white, 0px -2px 10px yellow, 0px -10px 20px #ff8000, 0px -18px 40px red;
+    font: 30px 'BlackJackRegular';
+}
+
+#settings select{ width: 100px; }
+
+/* Mobile */
+@media only screen and (max-width: 768px){
+
+    #clock{ padding-top: 100px; }
+
+    h1{ font-size: 90px; }
+
+    #alarm_name{
+        display: block;
+        width: 210px;
+        margin: 20px auto;
+        padding: 10px 20px;
+    }
+
+    #submit{
+        width: 250px;
+        padding: 20px;
+    }
+}
+
+/* Widescreen */
+@media only screen and (min-width: 1224px){
+
+    h1{ font-size: 130px; }
+
+}
