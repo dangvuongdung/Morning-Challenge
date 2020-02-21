@@ -21,7 +21,7 @@ var isChallenge = false;
 var timeup = false;
 var isImported = false;
 var senconds;
-var limitTime = 15;
+var limitTime = 12;
 var isSolved = false;
 var puzzleNumber;
 

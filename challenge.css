@@ -54,6 +54,55 @@ li {
     display: inline-flex; 
 }
 
+.clock-settings input {
+    border-radius: 10px;
+    padding: 5px 8px;
+}
+.clock-settings select {
+    text-align: center;
+    border-radius: 10px;
+    padding: 5px 8px;
+    width: 130%;
+    border: none;
+    box-shadow: none;
+    background-image: none;
+    -webkit-appearance: none;
+}
+
+.clock-settings select:focus {
+    outline: none;
+}
+
+.submit {
+    margin-top: 20px;
+    width: 120px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 10px;
+    cursor: pointer;
+    background-color: transparent;
+    border: 3px solid 	#FFFF33	;
+    border-radius: 50px;
+    -webkit-transition: all .15s ease-in-out;
+    transition: all .15s ease-in-out;
+    color: 	#FFFF33	;
+}
+
+#file {
+    background: transparent;
+    border-width: 2px;
+    border-color: aliceblue;
+    color: white;
+    
+}
+
+#alarm_donate_address {
+    width: 20%;
+}
+
 #clock{
     padding: 70px 0 50px;
     margin: auto;
