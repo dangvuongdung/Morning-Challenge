@@ -4,11 +4,11 @@ The idea to build this project I got inspired from my friend who wanna live like
 
 ### Functions
 - Create new challenge 
-- Show the last history
+- Donating coin (if you lose to yourself)
+- clock (^^)
 
 ### TODOs
 - Improve the UI
 - Seletive puzzle (Exp: English words, ...)
-- Show all history 
 
 **Note:** If you have any problem with the app or wanna to contribute please create new issue and give me thing you want. Have a great day!  
