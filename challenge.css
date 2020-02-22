@@ -13,13 +13,13 @@ body{
 
 h1{
     font-family: 'Orbitron';
-    font-size: 90px;
+    font-size: 50px;
     color: #00F746;
-    margin: 15px;
+    margin: 5px;
 }
 
 h2{
-    font-size: 70px;
+    font-size: 40px;
     color: 	    #EEE8AA;
     margin: 0;
 }
@@ -104,7 +104,7 @@ li {
 }
 
 #clock{
-    padding: 70px 0 50px;
+    padding: 10px 0 10px;
     margin: auto;
     text-align: center;
 }
@@ -151,6 +151,6 @@ li {
 /* Widescreen */
 @media only screen and (min-width: 1224px){
 
-    h1{ font-size: 130px; }
+    h1{ font-size: 100px; }
 
 }
